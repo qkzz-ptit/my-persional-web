@@ -60,9 +60,7 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-        /* ---------- KẾT THÚC SPLASH ---------- */
-
-        /* Reset */
+       
         * {
             margin: 0;
             padding: 0;
@@ -82,7 +80,6 @@
             scroll-margin-top: 80px;
         }
 
-        /* ----- HEADER DÙNG GRID ----- */
         header {
             position: fixed;
             top: 0;
@@ -143,7 +140,7 @@
         }
 
         .empty-col {
-            /* không có nội dung */
+
         }
 
         .container {
@@ -172,7 +169,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* HOME */
         #home .home-content .name {
             font-size: 64px;
             font-weight: 900;
@@ -252,7 +248,6 @@
             color: #fff;
         }
 
-        /* SOCIAL ICONS */
         .social-links {
             display: flex;
             gap: 18px;
@@ -279,7 +274,6 @@
             transform: translateY(-3px);
         }
 
-        /* ABOUT */
         #about .section-title {
             font-size: 48px;
             font-weight: 900;
@@ -340,7 +334,6 @@
             margin-top: 16px;
         }
 
-        /* EDUCATION */
         #education .section-title {
             font-size: 48px;
             font-weight: 900;
@@ -380,8 +373,7 @@
         #education .btn {
             margin-top: 16px;
         }
-
-        /* PROJECT */
+        
         #project .section-title {
             font-size: 48px;
             font-weight: 900;
@@ -451,7 +443,6 @@
             border: 1px solid #333;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             body { padding-top: 70px; }
             header {
@@ -531,7 +522,6 @@
 </head>
 <body>
 
-    <!-- SPLASH SCREEN -->
     <div id="splash">
         <div class="name">Hello, I'm</div>
         <div class="mid">Quoc Khanh</div>
@@ -550,7 +540,6 @@
         <div class="empty-col"></div>
     </header>
 
-    <!-- HOME -->
     <section id="home">
         <div class="container">
             <div class="row">
@@ -590,7 +579,6 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
         <div class="container">
             <div class="row">
@@ -619,7 +607,6 @@
         </div>
     </section>
 
-    <!-- EDUCATION -->
     <section id="education">
         <div class="container">
             <div class="row">
@@ -645,13 +632,12 @@
         </div>
     </section>
 
-    <!-- PROJECT -->
     <section id="project">
         <div class="container">
             <div class="section-title">#Quoc Khanh.</div>
             <div class="project-sub">Latest Project</div>
             <div class="project-grid">
-                <a href="https://replit.com/@phquockhanh2312/Bot-cua-qkzz" target="_blank" class="project-link">
+                <a href="https://github.com/qkzz-ptit/ChatbotMessenger" target="_blank" class="project-link">
                     <div class="project-card">
                         <h3>Chatbot Messenger</h3>
                         <div class="tech">
@@ -659,7 +645,6 @@
                         </div>
                     </div>
                 </a>
-                <a href="https://link-to-personal-website.com" target="_blank" class="project-link">
                     <div class="project-card">
                         <h3>Personal Website</h3>
                         <p>I developed a personal website to showcase my skills, projects, and experience, while giving recruiters a better understanding of my background and capabilities.</p>
@@ -668,18 +653,24 @@
                         </div>
                     </div>
                 </a>
+                </a>
+                    <div class="project-card">
+                        <h3>RAG Chatbot</h3>
+                        <p>A chatbot designed to help users learn more about PTIT, including its programs, admissions, academic information, and student services.</p>
+                        <div class="tech">
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <script>
-        // ----- SPLASH SCREEN -----
         const splash = document.getElementById('splash');
         splash.addEventListener('click', function() {
             splash.classList.add('hidden');
         });
-
-        // ----- CÁC SỰ KIỆN NÚT -----
         document.getElementById('hiBtn').addEventListener('click', function() {
             this.style.transform = 'scale(0.92)';
             setTimeout(() => this.style.transform = '', 200);
@@ -695,11 +686,9 @@
             setTimeout(() => this.style.transform = '', 200);
             alert('📄 CV download will be available soon.');
         });
-
-        // ----- ACTIVE MENU (SỬA DỨT ĐIỂM) -----
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('section');
-        let isClick = false; // cờ để biết đang click
+        let isClick = false;
 
         function updateActive(linkId) {
             navLinks.forEach(link => {
@@ -710,22 +699,19 @@
             });
         }
 
-        // Sự kiện click: cập nhật active ngay và tạm khóa scroll
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href').substring(1);
-                updateActive(targetId); // đổi active ngay
+                updateActive(targetId); 
                 isClick = true;
                 setTimeout(() => {
-                    isClick = false; // sau 300ms cho phép scroll cập nhật lại
+                    isClick = false; 
                 }, 300);
-                // Không prevent default để trình duyệt tự scroll
             });
         });
 
-        // Sự kiện scroll: bỏ qua nếu đang click
         window.addEventListener('scroll', function() {
-            if (isClick) return; // đang click thì không cập nhật
+            if (isClick) return; 
             let currentId = 'home';
             const headerHeight = document.querySelector('header').offsetHeight;
             sections.forEach(section => {
